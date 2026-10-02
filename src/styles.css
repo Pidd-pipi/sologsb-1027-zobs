@@ -62,6 +62,7 @@ button, input, textarea, select { font: inherit; }
 .step-number, .review-steps > button > span { color: #738092; font: 600 11px "IBM Plex Mono", monospace; }
 .step-number.confirmed { color: var(--green); }
 .step-number.returned { color: var(--red); }
+.step-number.invalidated { color: var(--amber); }
 .step-list button.selected .step-number { color: #78b5f0; }
 .step-copy strong, .step-copy small, .review-steps strong, .review-steps small { display: block; }
 .step-copy strong, .review-steps strong { overflow: hidden; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
@@ -70,7 +71,7 @@ button, input, textarea, select { font: inherit; }
 .step-actions { padding: 9px; display: flex; justify-content: center; border-top: 1px solid #e6eaf0; background: #f8fafb; }
 .editor-main { min-width: 0; display: grid; gap: 14px; }
 .bp6-card { margin: 0; }
-.process-meta-card, .step-editor-card, .dependency-card, .review-summary, .comment-card, .impact-card, .safety-card, .gate-card, .version-panel, .diff-panel, .freeze-rules { padding: 19px; border: 1px solid var(--line); border-radius: 10px; }
+.process-meta-card, .step-editor-card, .dependency-card, .flow-card, .review-summary, .comment-card, .impact-card, .safety-card, .gate-card, .version-panel, .diff-panel, .freeze-rules { padding: 19px; border: 1px solid var(--line); border-radius: 10px; }
 .card-title { margin-bottom: 16px; }
 .meta-grid, .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; }
 .form-grid.two-column { grid-template-columns: 1fr 1fr; }
@@ -79,6 +80,12 @@ button, input, textarea, select { font: inherit; }
 .bp6-label { color: #4d5968; font-size: 11px; font-weight: 600; }
 .dependency-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 14px; }
 .muted { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.65; }
+.flow-card .muted strong { color: var(--ink); }
+.flow-card .dependency-grid { margin-top: 12px; }
+.flow-card .flow-pending-callout { margin-bottom: 12px; font-size: 11px; line-height: 1.6; }
+.flow-card .flow-pending-callout .bp6-button { margin-top: 8px; }
+.flow-consumers { margin-top: 12px; padding-top: 10px; border-top: 1px dashed #dbe1e9; }
+.invalidation-callout { margin-bottom: 14px; font-size: 11px; line-height: 1.6; }
 .inspector-panel, .review-actions { display: grid; gap: 14px; position: sticky; top: 85px; }
 .impact-card .bp6-callout { margin-bottom: 10px; }
 .impact-card .bp6-callout strong { display: block; font-size: 11px; }
@@ -99,6 +106,7 @@ button, input, textarea, select { font: inherit; }
 .review-steps > button { min-height: 68px; }
 .review-steps > button.returned { border-left: 3px solid var(--red); }
 .review-steps > button.confirmed { border-left: 3px solid var(--green); }
+.review-steps > button.invalidated { border-left: 3px solid var(--amber); }
 .review-main { min-width: 0; display: grid; gap: 14px; }
 .review-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-bottom: 16px; background: #dfe5ec; border: 1px solid #dfe5ec; }
 .review-facts > div { min-width: 0; padding: 13px; background: #f8fafb; }
