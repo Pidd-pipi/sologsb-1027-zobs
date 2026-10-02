@@ -30,6 +30,21 @@ interface ReviewComment {
   resolved: boolean;
 }
 
+/** 步骤产出物：随步骤流转到下游的中间试剂，带批次号。 */
+interface StepOutput {
+  id: string;
+  name: string;
+  batch: string;
+}
+
+/** 流转关系：某步骤消耗上游步骤的某一项产出物。 */
+interface FlowLink {
+  id: string;
+  fromStepId: string;
+  toStepId: string;
+  outputId: string;
+}
+
 interface ProcessStep {
   id: string;
   title: string;
@@ -43,8 +58,13 @@ interface ProcessStep {
   dependencies: string[];
   safetyNote: string;
   expectedResult: string;
+  outputs: StepOutput[];
   status: StepStatus;
   comments: ReviewComment[];
+  /** 上游批次、用量或产出名称变更后置为 true：原确认保留，需重新确认。 */
+  stale?: boolean;
+  invalidReason?: string;
+  invalidAt?: string;
 }
 
 interface VersionSnapshot {
@@ -67,6 +87,7 @@ interface ExperimentProcess {
   status: ProcessStatus;
   version: string;
   steps: ProcessStep[];
+  flowLinks: FlowLink[];
   versions: VersionSnapshot[];
   frozenAt?: string;
   updatedAt: string;
